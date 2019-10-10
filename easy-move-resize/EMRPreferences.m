@@ -1,6 +1,6 @@
 #import "EMRPreferences.h"
 
-#define DEFAULT_MODIFIER_FLAGS kCGEventFlagMaskCommand | kCGEventFlagMaskControl
+#define DEFAULT_MODIFIER_FLAGS kCGEventFlagMaskSecondaryFn
 
 @implementation EMRPreferences {
 @private
@@ -37,6 +37,7 @@
     
     modifierFlags = [self flagsFromFlagString:modifierFlagString];
     
+
     return modifierFlags;
 }
 
@@ -74,7 +75,7 @@
 }
 
 - (void)setToDefaults {
-    [self setModifierFlagString:[@[CTRL_KEY, CMD_KEY] componentsJoinedByString:@","]];
+    [self setModifierFlagString:[@[FN_KEY] componentsJoinedByString:@","]];
 }
 
 - (NSMutableSet*)createSetFromFlagString:(NSString*)modifierFlagString {
@@ -108,6 +109,9 @@
     }
     if ([flagList containsObject:CMD_KEY]) {
         modifierFlags |= kCGEventFlagMaskCommand;
+    }
+    if ([flagList containsObject:FN_KEY]) {
+        modifierFlags |= kCGEventFlagMaskSecondaryFn;
     }
     
     return modifierFlags;

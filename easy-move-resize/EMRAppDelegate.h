@@ -23,5 +23,5 @@ static const double kResizeFilterInterval = 0.04;
 @property (weak) IBOutlet NSMenuItem *ctrlMenu;
 @property (weak) IBOutlet NSMenuItem *shiftMenu;
 @property (weak) IBOutlet NSMenuItem *disabledMenu;
-
+@property (weak) IBOutlet NSMenuItem *fnMenu;
 @end
